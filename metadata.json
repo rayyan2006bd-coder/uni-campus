@@ -1,0 +1,10 @@
+{
+  "name": "Remix: Student Campus Hub",
+  "description": "A high-fidelity response-driven student campus organizer integrating property comparison, cold storage lock booking, safety store, career applications, dynamic QR transit, nutrition charts, peer trading, and premium laundry scheduling.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

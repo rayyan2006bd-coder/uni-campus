@@ -1,0 +1,202 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User profile with role-based and campus configuration details",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "name": { "type": "string" },
+        "role": { "type": "string", "enum": ["student", "employer", "admin"] },
+        "campus": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["uid", "email", "name", "role", "campus"]
+    },
+    "AccommodationBooking": {
+      "title": "Accommodation Booking",
+      "description": "Housing listings visited or saved by the student, tour bookings",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "propertyName": { "type": "string" },
+        "propertyAddress": { "type": "string" },
+        "rent": { "type": "number" },
+        "coordinates": { "type": "object" },
+        "visitDate": { "type": "string" },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["userId", "propertyName", "rent", "visitDate"]
+    },
+    "ColdStorageBooking": {
+      "title": "Cold Storage Booking",
+      "description": "Smart, capacity-aware cold or freezing locker storage booking",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "lockerNumber": { "type": "string" },
+        "storageType": { "type": "string", "enum": ["refrigerated", "frozen"] },
+        "itemsStored": { "type": "string" },
+        "weightKg": { "type": "number" },
+        "expiresAt": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["userId", "lockerNumber", "storageType", "itemsStored"]
+    },
+    "SafetyOrder": {
+      "title": "Safety Order",
+      "description": "Lab and personal safety equipment order for campus pickup",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "itemName": { "type": "string" },
+        "size": { "type": "string" },
+        "quantity": { "type": "number" },
+        "priceTotal": { "type": "number" },
+        "pickupStatus": { "type": "string", "enum": ["pending", "ready", "picked_up"] },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["userId", "itemName", "quantity", "priceTotal", "pickupStatus"]
+    },
+    "Job": {
+      "title": "Campus Career Job",
+      "description": "On-campus or local partner job listing",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "company": { "type": "string" },
+        "department": { "type": "string" },
+        "location": { "type": "string" },
+        "salaryRange": { "type": "string" },
+        "description": { "type": "string" },
+        "postedBy": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["title", "company", "description", "postedBy"]
+    },
+    "JobApplication": {
+      "title": "Job Application",
+      "description": "Application details for campus career postings",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "userEmail": { "type": "string" },
+        "userName": { "type": "string" },
+        "jobId": { "type": "string" },
+        "jobTitle": { "type": "string" },
+        "company": { "type": "string" },
+        "coverLetter": { "type": "string" },
+        "status": { "type": "string", "enum": ["applied", "reviewing", "interview", "offered", "rejected"] },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["userId", "jobId", "jobTitle", "company", "status"]
+    },
+    "ShuttleBooking": {
+      "title": "Shuttle Booking",
+      "description": "QR Ticket dynamic shuttle trip booking",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "routeName": { "type": "string" },
+        "stopFrom": { "type": "string" },
+        "stopTo": { "type": "string" },
+        "departureTime": { "type": "string" },
+        "qrCode": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["userId", "routeName", "stopFrom", "stopTo", "departureTime", "qrCode"]
+    },
+    "MealSubscription": {
+      "title": "Protein Marketplace Subscription",
+      "description": "Daily nutrition protein tracker intake logs",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "proteinGoal": { "type": "number" },
+        "mealsCount": { "type": "number" },
+        "meals": { "type": "array" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["userId", "proteinGoal"]
+    },
+    "MarketplaceItem": {
+      "title": "Student Marketplace Item",
+      "description": "Student C2C item details",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "price": { "type": "number" },
+        "category": { "type": "string" },
+        "condition": { "type": "string" },
+        "sellerId": { "type": "string" },
+        "sellerName": { "type": "string" },
+        "sellerEmail": { "type": "string" },
+        "isSold": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["title", "price", "sellerId", "isSold"]
+    },
+    "LaundryBooking": {
+      "title": "Laundry Service Booking",
+      "description": "Professional washing & folding reservations",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "serviceType": { "type": "string" },
+        "weightLbs": { "type": "number" },
+        "pickupTime": { "type": "string" },
+        "notes": { "type": "string" },
+        "status": { "type": "string", "enum": ["received", "washing", "drying", "ready", "delivered"] },
+        "priceTotal": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["userId", "serviceType", "weightLbs", "pickupTime", "status"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Student or Admin user profile properties"
+    },
+    "/accommodationBookings/{bookingId}": {
+      "schema": "AccommodationBooking",
+      "description": "Housing and rental inspections bookings"
+    },
+    "/coldStorageBookings/{bookingId}": {
+      "schema": "ColdStorageBooking",
+      "description": "Booking of specialized refrigerated lockers"
+    },
+    "/safetyOrders/{orderId}": {
+      "schema": "SafetyOrder",
+      "description": "Safety wear pickup transactions"
+    },
+    "/jobs/{jobId}": {
+      "schema": "Job",
+      "description": "Job board listings"
+    },
+    "/jobApplications/{applicationId}": {
+      "schema": "JobApplication",
+      "description": "Job applications with letters and CV data"
+    },
+    "/shuttleBookings/{bookingId}": {
+      "schema": "ShuttleBooking",
+      "description": "Active dynamic campus ride-fares"
+    },
+    "/mealSubscriptions/{subscriptionId}": {
+      "schema": "MealSubscription",
+      "description": "Nutrient records for active user subscriptions"
+    },
+    "/marketplaceItems/{itemId}": {
+      "schema": "MarketplaceItem",
+      "description": "Used and new textbooks and furniture student trades"
+    },
+    "/laundryBookings/{bookingId}": {
+      "schema": "LaundryBooking",
+      "description": "College dorm laundry laundry reservations"
+    }
+  }
+}
